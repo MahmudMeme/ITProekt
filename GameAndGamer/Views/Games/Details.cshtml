@@ -1,0 +1,71 @@
+﻿@model GameAndGamer.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre.Name)
+        </dt>
+
+        <dd>
+          @* <a href="/Genre/Details/@Model.GenreId">@Model.Genre.Name</a>**@
+            @Html.DisplayFor(model => model.Genre.Name)
+           
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgUrl)
+        </dt>
+
+        <dd>
+            <img src="@Model.ImgUrl" style="max-width=500px" />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Developer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Developer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Add Player", "AddPlayer", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<h2>@Model.Name is played by</h2>
+<ul>
+    @foreach (var p in Model.PlayersList)
+    {
+        <li>
+            <a href="/Players/Details/@p.Id">@p.Name</a>
+        </li>
+    }
+</ul>

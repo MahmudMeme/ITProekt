@@ -1,0 +1,15 @@
+﻿@model GameAndGamer.Models.GameToPlayer
+@{
+    ViewBag.Title = "AddGame";
+}
+
+<h2>Add Game for selected player</h2>
+
+@using (Html.BeginForm("AddGame", "Players"))
+{
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.GameId, new SelectList(Model.Games, "Id", "Name"), new { @class = "form-control" })
+        @Html.HiddenFor(m => m.PlayerId)
+    </div>
+    <button type="submit" @*class="btn-success"*@>Save</button>
+}
